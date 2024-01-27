@@ -1,0 +1,38 @@
+version: "3.9"
+
+volumes:
+  db_data:
+
+services:
+#  security-template:
+#    image: yuihmoo/security-template
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    restart: always
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - VERSION=0.0.1
+#    volumes:
+#      - .:/application
+#    working_dir: /application
+#    command: |
+#      sh -c "
+#        chmod +x ./gradlew;
+#        ./gradlew --stop;
+#        ./gradlew build --continuous --quiet &
+#          ./gradlew bootRun;
+#      "
+  postgres:
+    image: bitnami/postgresql:14.2.0
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRESQL_USERNAME=yuihmoo
+      - POSTGRESQL_PASSWORD=ZHlkZWhmMTI=
+      - POSTGRESQL_DATABASE=postgres
+    volumes:
+      - db_data:/bitnami/postgresql
+      - ./src/main/resources/schema/:/docker-entrypoint-initdb.d
