@@ -3,7 +3,7 @@ package com.security.template.config;
 import com.security.template.jwt.JwtAccessDeniedHandler;
 import com.security.template.jwt.JwtAuthenticationEntryPoint;
 import com.security.template.jwt.JwtFilter;
-import com.security.template.jwt.TokenProvider;
+import com.security.template.jwt.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final TokenProvider tokenProvider;
+    private final JwtUtils tokenProvider;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 

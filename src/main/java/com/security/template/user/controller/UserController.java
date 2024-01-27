@@ -1,4 +1,4 @@
-package com.security.template.user;
+package com.security.template.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;

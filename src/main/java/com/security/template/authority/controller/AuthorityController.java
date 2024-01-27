@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -21,7 +19,6 @@ public class AuthorityController {
 
     @PostMapping("/signup")
     public ResponseEntity<User> signup(@Valid @RequestBody SignupRequest signupRequest) {
-        signupRequest.setCreatedDate(LocalDateTime.now());
         return ResponseEntity.ok().body(userService.signup(signupRequest));
     }
 }

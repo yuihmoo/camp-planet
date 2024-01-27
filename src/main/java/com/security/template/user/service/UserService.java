@@ -5,6 +5,7 @@ import com.security.template.user.entity.User;
 import com.security.template.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 public class UserService {
     private final UserRepository userRepository;
 
+    @Transactional
     public User signup(SignupRequest signupRequest) {
         User user = User.builder()
                 .name(signupRequest.getName())
