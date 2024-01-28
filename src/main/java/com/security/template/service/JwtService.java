@@ -1,11 +1,12 @@
 package com.security.template.service;
 
+import com.security.template.dto.response.AuthenticationResponse;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public interface JwtService {
     String extractUserName(String token);
 
-    String generateToken(UserDetails userDetails);
+    AuthenticationResponse generateAuthenticationResponse(UserDetails userDetails);
 
     boolean isTokenValid(String token, UserDetails userDetails);
 }
