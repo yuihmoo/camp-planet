@@ -36,3 +36,16 @@ services:
     volumes:
       - db_data:/bitnami/postgresql
       - ./src/main/resources/schema/:/docker-entrypoint-initdb.d
+
+  redis:
+    image: bitnami/redis:6.2.7-debian-10-r0
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - /bitnami/redis/data
+    environment:
+      - REDIS_PASS=redis
+    command: |
+      bash -euxc "redis-server --requirepass $$REDIS_PASS"
+    user: root
