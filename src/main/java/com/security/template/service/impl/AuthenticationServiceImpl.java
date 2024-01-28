@@ -1,10 +1,10 @@
 package com.security.template.service.impl;
 
-import com.security.template.dao.request.SignUpRequest;
-import com.security.template.dao.request.LoginRequest;
-import com.security.template.dao.response.AuthenticationResponse;
-import com.security.template.entities.Role;
-import com.security.template.entities.User;
+import com.security.template.dto.request.SignUpRequest;
+import com.security.template.dto.request.LoginRequest;
+import com.security.template.dto.response.AuthenticationResponse;
+import com.security.template.constant.Role;
+import com.security.template.entity.User;
 import com.security.template.repository.UserRepository;
 import com.security.template.service.AuthenticationService;
 import com.security.template.service.JwtService;

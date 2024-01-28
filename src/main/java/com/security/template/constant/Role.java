@@ -1,4 +1,4 @@
-package com.security.template.entities;
+package com.security.template.constant;
 
 public enum Role {
     USER,

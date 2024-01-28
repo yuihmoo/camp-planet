@@ -1,4 +1,4 @@
-package com.security.template.dao.response;
+package com.security.template.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

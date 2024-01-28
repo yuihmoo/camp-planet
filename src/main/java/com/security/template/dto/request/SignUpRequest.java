@@ -1,4 +1,4 @@
-package com.security.template.dao.request;
+package com.security.template.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
