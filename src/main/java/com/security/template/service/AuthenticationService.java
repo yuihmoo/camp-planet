@@ -2,10 +2,10 @@ package com.security.template.service;
 
 import com.security.template.dao.request.SignUpRequest;
 import com.security.template.dao.request.LoginRequest;
-import com.security.template.dao.response.JwtAuthenticationResponse;
+import com.security.template.dao.response.AuthenticationResponse;
 
 public interface AuthenticationService {
-    JwtAuthenticationResponse signup(SignUpRequest request);
+    AuthenticationResponse signup(SignUpRequest request);
 
-    JwtAuthenticationResponse signin(LoginRequest request);
+    AuthenticationResponse login(LoginRequest request);
 }

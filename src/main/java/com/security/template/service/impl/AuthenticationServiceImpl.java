@@ -2,7 +2,7 @@ package com.security.template.service.impl;
 
 import com.security.template.dao.request.SignUpRequest;
 import com.security.template.dao.request.LoginRequest;
-import com.security.template.dao.response.JwtAuthenticationResponse;
+import com.security.template.dao.response.AuthenticationResponse;
 import com.security.template.entities.Role;
 import com.security.template.entities.User;
 import com.security.template.repository.UserRepository;
@@ -25,7 +25,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     @Override
-    public JwtAuthenticationResponse signup(SignUpRequest request) {
+    public AuthenticationResponse signup(SignUpRequest request) {
         var user = User.builder()
                 .name(request.getName())
                 .loginId(request.getLoginId())
@@ -36,16 +36,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .role(Role.USER).build();
         userRepository.save(user);
         var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        return AuthenticationResponse.builder().token(jwt).build();
     }
 
     @Override
-    public JwtAuthenticationResponse signin(LoginRequest request) {
+    public AuthenticationResponse login(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getLoginId(), request.getPassword()));
         var user = userRepository.findByLoginId(request.getLoginId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
         var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        return AuthenticationResponse.builder().token(jwt).build();
     }
 }
