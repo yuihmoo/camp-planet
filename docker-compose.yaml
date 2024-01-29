@@ -2,6 +2,7 @@ version: "3.9"
 
 volumes:
   db_data:
+  data_minio:
 
 services:
 #  camp-planet:
