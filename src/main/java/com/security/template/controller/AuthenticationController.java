@@ -4,6 +4,7 @@ import com.security.template.dto.request.SignUpRequest;
 import com.security.template.dto.request.LoginRequest;
 import com.security.template.dto.response.AuthenticationResponse;
 import com.security.template.service.AuthenticationService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,5 +25,11 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authenticationService.login(request));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<AuthenticationResponse> logout(HttpServletRequest request) {
+        authenticationService.logout(request);
+        return ResponseEntity.ok().build();
     }
 }

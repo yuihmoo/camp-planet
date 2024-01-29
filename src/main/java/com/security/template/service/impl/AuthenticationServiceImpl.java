@@ -1,14 +1,18 @@
 package com.security.template.service.impl;
 
-import com.security.template.dto.request.SignUpRequest;
-import com.security.template.dto.request.LoginRequest;
-import com.security.template.dto.response.AuthenticationResponse;
 import com.security.template.constant.Role;
+import com.security.template.dto.request.LoginRequest;
+import com.security.template.dto.request.SignUpRequest;
+import com.security.template.dto.response.AuthenticationResponse;
 import com.security.template.entity.User;
 import com.security.template.repository.UserRepository;
 import com.security.template.service.AuthenticationService;
 import com.security.template.service.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +27,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final RedisTemplate<String, String> redisTemplate;
 
     @Override
     public AuthenticationResponse signup(SignUpRequest request) {
@@ -35,7 +40,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .createdDate(LocalDateTime.now())
                 .role(Role.USER).build();
         userRepository.save(user);
-        return jwtService.generateAuthenticationResponse(user);
+        AuthenticationResponse authenticationResponse = jwtService.generateAuthenticationResponse(user);
+        this.saveRefreshTokenHistory(user.getLoginId(), authenticationResponse.getRefreshToken());
+        return authenticationResponse;
     }
 
     @Override
@@ -44,6 +51,28 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 new UsernamePasswordAuthenticationToken(request.getLoginId(), request.getPassword()));
         var user = userRepository.findByLoginId(request.getLoginId())
                 .orElseThrow(() -> new IllegalArgumentException("아이디 혹은 비밀번호를 다시 확인해주세요."));
-        return jwtService.generateAuthenticationResponse(user);
+        AuthenticationResponse authenticationResponse = jwtService.generateAuthenticationResponse(user);
+        this.saveRefreshTokenHistory(user.getLoginId(), authenticationResponse.getRefreshToken());
+        return authenticationResponse;
+    }
+
+    //todo: logout 시 accessToken 을 blackList 처리 할 것인가
+    @Override
+    public void logout(@NonNull HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        String accessToken = authHeader.substring(7);
+        String loginId = jwtService.extractUserName(accessToken);
+        this.deleteRefreshTokenHistory(loginId);
+    }
+
+    @Override
+    public void saveRefreshTokenHistory(String loginId, String refreshToken) {
+        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+        valueOperations.set(loginId, refreshToken);
+    }
+
+    @Override
+    public void deleteRefreshTokenHistory(String loginId) {
+        redisTemplate.delete(loginId);
     }
 }
