@@ -56,7 +56,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return authenticationResponse;
     }
 
-    //todo: logout 시 accessToken 을 blackList 처리 할 것인가
     @Override
     public void logout(@NonNull HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
