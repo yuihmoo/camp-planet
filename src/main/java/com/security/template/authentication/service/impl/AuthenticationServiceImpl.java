@@ -33,6 +33,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public AuthenticationResponse signup(SignUpRequest request) {
         var user = User.builder()
                 .name(request.getName())
+                .nickName(request.getNickName())
+                .vehicleNumber(request.getVehicleNumber())
+                .region(request.getRegion())
+                .profile(request.getProfile())
                 .loginId(request.getLoginId())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())

@@ -4,7 +4,7 @@ CREATE TABLE account (
 	id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
 	login_id VARCHAR(20) UNIQUE NOT NULL,
 	password VARCHAR(255) NOT NULL,
-	name VARCHAR(10) NOT NULL,
+	name VARCHAR(20) NOT NULL,
 	nick_name VARCHAR(10) UNIQUE NOT NULL,
 	vehicle_number VARCHAR(10),
 	region VARCHAR(10),

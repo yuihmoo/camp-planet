@@ -45,6 +45,9 @@ public class User implements UserDetails {
     @Column
     private String region;
 
+    @Column
+    private String profile;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;

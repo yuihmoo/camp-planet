@@ -5,6 +5,7 @@ import com.security.template.authentication.dto.request.SignUpRequest;
 import com.security.template.authentication.service.AuthenticationService;
 import com.security.template.authentication.dto.response.AuthenticationResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
     @PostMapping("/signup")
-    public ResponseEntity<AuthenticationResponse> signup(@RequestBody SignUpRequest request) {
+    public ResponseEntity<AuthenticationResponse> signup(@Valid @RequestBody SignUpRequest request) {
         return ResponseEntity.ok(authenticationService.signup(request));
     }
 
