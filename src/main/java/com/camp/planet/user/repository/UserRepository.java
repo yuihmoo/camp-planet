@@ -1,4 +1,4 @@
-package com.camp.planet.authentication.repository;
+package com.camp.planet.user.repository;
 
 import com.camp.planet.authentication.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

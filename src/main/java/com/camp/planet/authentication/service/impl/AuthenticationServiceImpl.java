@@ -5,7 +5,7 @@ import com.camp.planet.authentication.dto.request.LoginRequest;
 import com.camp.planet.authentication.dto.request.SignUpRequest;
 import com.camp.planet.authentication.dto.response.AuthenticationResponse;
 import com.camp.planet.authentication.entity.User;
-import com.camp.planet.authentication.repository.UserRepository;
+import com.camp.planet.user.repository.UserRepository;
 import com.camp.planet.authentication.service.AuthenticationService;
 import com.camp.planet.authentication.service.JwtService;
 import jakarta.servlet.http.HttpServletRequest;

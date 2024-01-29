@@ -1,7 +1,7 @@
-package com.camp.planet.authentication.service.impl;
+package com.camp.planet.user.service.impl;
 
-import com.camp.planet.authentication.repository.UserRepository;
-import com.camp.planet.authentication.service.UserService;
+import com.camp.planet.user.repository.UserRepository;
+import com.camp.planet.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

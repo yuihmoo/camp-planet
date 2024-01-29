@@ -1,6 +1,6 @@
 package com.camp.planet.authentication.config;
 
-import com.camp.planet.authentication.service.UserService;
+import com.camp.planet.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

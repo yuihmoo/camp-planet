@@ -1,4 +1,4 @@
-package com.camp.planet.authentication.service;
+package com.camp.planet.user.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

@@ -1,7 +1,7 @@
 package com.camp.planet.authentication.config;
 
 import com.camp.planet.authentication.service.JwtService;
-import com.camp.planet.authentication.service.UserService;
+import com.camp.planet.user.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
