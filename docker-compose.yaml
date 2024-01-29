@@ -49,3 +49,18 @@ services:
     command: |
       bash -euxc "redis-server --requirepass $$REDIS_PASS"
     user: root
+
+  minio:
+    image: minio/minio:RELEASE.2022-05-08T23-50-31Z
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=console
+      - MINIO_SECRET_KEY=console123
+      - MINIO_BUCKET_NAME=floatingmap
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - data_minio:/data
