@@ -1,6 +1,6 @@
-package com.camp.planet.authentication.entity;
+package com.camp.planet.user.entity;
 
-import com.camp.planet.authentication.constant.Role;
+import com.camp.planet.user.constant.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

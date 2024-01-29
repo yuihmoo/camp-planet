@@ -1,4 +1,4 @@
-package com.camp.planet.authentication.constant;
+package com.camp.planet.user.constant;
 
 public enum Role {
     USER,
