@@ -36,6 +36,15 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String name;
 
+    @Column(unique = true, nullable = false)
+    private String nickName;
+
+    @Column
+    private String vehicleNumber;
+
+    @Column
+    private String region;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
