@@ -31,7 +31,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse signup(SignUpRequest request) {
-        var user = User.builder()
+        User user = User.builder()
                 .name(request.getName())
                 .nickName(request.getNickName())
                 .vehicleNumber(request.getVehicleNumber())
@@ -53,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public AuthenticationResponse login(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getLoginId(), request.getPassword()));
-        var user = userRepository.findByLoginId(request.getLoginId())
+        User user = userRepository.findByLoginId(request.getLoginId())
                 .orElseThrow(() -> new IllegalArgumentException("아이디 혹은 비밀번호를 다시 확인해주세요."));
         AuthenticationResponse authenticationResponse = jwtService.generateAuthenticationResponse(user);
         this.saveRefreshTokenHistory(user.getLoginId(), authenticationResponse.getRefreshToken());
