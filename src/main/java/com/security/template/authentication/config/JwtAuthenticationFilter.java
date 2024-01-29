@@ -1,7 +1,7 @@
-package com.security.template.config;
+package com.security.template.authentication.config;
 
-import com.security.template.service.JwtService;
-import com.security.template.service.UserService;
+import com.security.template.authentication.service.JwtService;
+import com.security.template.authentication.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

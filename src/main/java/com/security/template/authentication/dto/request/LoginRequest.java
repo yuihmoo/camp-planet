@@ -1,4 +1,4 @@
-package com.security.template.dto.request;
+package com.security.template.authentication.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignUpRequest {
+public class LoginRequest {
     private String loginId;
     private String password;
-    private String name;
-    private String email;
-    private String phone;
 }

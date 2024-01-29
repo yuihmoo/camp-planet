@@ -1,4 +1,4 @@
-package com.security.template.dto.response;
+package com.security.template.authentication.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
-package com.security.template.service;
+package com.security.template.authentication.service;
 
-import com.security.template.dto.response.AuthenticationResponse;
+import com.security.template.authentication.dto.response.AuthenticationResponse;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public interface JwtService {

@@ -1,6 +1,6 @@
-package com.security.template.repository;
+package com.security.template.authentication.repository;
 
-import com.security.template.entity.User;
+import com.security.template.authentication.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

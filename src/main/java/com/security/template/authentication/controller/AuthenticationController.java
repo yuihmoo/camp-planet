@@ -1,9 +1,9 @@
-package com.security.template.controller;
+package com.security.template.authentication.controller;
 
-import com.security.template.dto.request.SignUpRequest;
-import com.security.template.dto.request.LoginRequest;
-import com.security.template.dto.response.AuthenticationResponse;
-import com.security.template.service.AuthenticationService;
+import com.security.template.authentication.dto.request.LoginRequest;
+import com.security.template.authentication.dto.request.SignUpRequest;
+import com.security.template.authentication.service.AuthenticationService;
+import com.security.template.authentication.dto.response.AuthenticationResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

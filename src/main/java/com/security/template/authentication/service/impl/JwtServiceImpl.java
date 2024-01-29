@@ -1,7 +1,7 @@
-package com.security.template.service.impl;
+package com.security.template.authentication.service.impl;
 
-import com.security.template.dto.response.AuthenticationResponse;
-import com.security.template.service.JwtService;
+import com.security.template.authentication.dto.response.AuthenticationResponse;
+import com.security.template.authentication.service.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

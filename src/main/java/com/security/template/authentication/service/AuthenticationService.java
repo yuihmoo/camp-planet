@@ -1,8 +1,8 @@
-package com.security.template.service;
+package com.security.template.authentication.service;
 
-import com.security.template.dto.request.SignUpRequest;
-import com.security.template.dto.request.LoginRequest;
-import com.security.template.dto.response.AuthenticationResponse;
+import com.security.template.authentication.dto.request.LoginRequest;
+import com.security.template.authentication.dto.request.SignUpRequest;
+import com.security.template.authentication.dto.response.AuthenticationResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.lang.NonNull;
 

@@ -1,13 +1,13 @@
-package com.security.template.service.impl;
+package com.security.template.authentication.service.impl;
 
-import com.security.template.constant.Role;
-import com.security.template.dto.request.LoginRequest;
-import com.security.template.dto.request.SignUpRequest;
-import com.security.template.dto.response.AuthenticationResponse;
-import com.security.template.entity.User;
-import com.security.template.repository.UserRepository;
-import com.security.template.service.AuthenticationService;
-import com.security.template.service.JwtService;
+import com.security.template.authentication.dto.request.LoginRequest;
+import com.security.template.authentication.dto.request.SignUpRequest;
+import com.security.template.authentication.repository.UserRepository;
+import com.security.template.authentication.constant.Role;
+import com.security.template.authentication.dto.response.AuthenticationResponse;
+import com.security.template.authentication.entity.User;
+import com.security.template.authentication.service.AuthenticationService;
+import com.security.template.authentication.service.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

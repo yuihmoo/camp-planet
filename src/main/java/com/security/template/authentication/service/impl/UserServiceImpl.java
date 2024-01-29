@@ -1,7 +1,7 @@
-package com.security.template.service.impl;
+package com.security.template.authentication.service.impl;
 
-import com.security.template.repository.UserRepository;
-import com.security.template.service.UserService;
+import com.security.template.authentication.repository.UserRepository;
+import com.security.template.authentication.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

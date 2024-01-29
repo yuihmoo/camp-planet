@@ -1,6 +1,6 @@
-package com.security.template.config;
+package com.security.template.authentication.config;
 
-import com.security.template.service.UserService;
+import com.security.template.authentication.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package com.security.template.entity;
+package com.security.template.authentication.entity;
 
-import com.security.template.constant.Role;
+import com.security.template.authentication.constant.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
