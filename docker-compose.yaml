@@ -56,9 +56,10 @@ services:
     command: server /data --console-address ":9001"
     environment:
       - MINIO_ENDPOINT=minio:9000
-      - MINIO_ACCESS_KEY=console
-      - MINIO_SECRET_KEY=console123
-      - MINIO_BUCKET_NAME=floatingmap
+      - MINIO_ROOT_USER=root
+      - MINIO_ROOT_PASSWORD=ZGRyb290MTIhIQ==
+      - MINIO_NOTIFY_WEBHOOK_ENABLE=on
+      - MINIO_NOTIFY_WEBHOOK_ENDPOINT=camp-planet:8080/bucket/notify
     restart: always
     ports:
       - "9000:9000"
