@@ -56,17 +56,18 @@ public class MinioFileService {
      * 서버 -> Minio 파일 직접 업로드
      * @param fileRequest : file instance
      */
-    public void uploadObject(FileRequest fileRequest) {
+    public String uploadObject(FileRequest fileRequest) {
         try {
             minioClient.putObject(PutObjectArgs.builder()
                     .bucket(fileRequest.getBucketName())
-                    .object(fileRequest.getFileName())
+                    .object(fileRequest.getFile().getOriginalFilename())
                     .contentType(fileRequest.getFile().getContentType())
                     .stream(fileRequest.getFile().getInputStream(), fileRequest.getFile().getSize(), -1)
                     .build());
         } catch (MinioException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
             logger.error(e.getMessage());
         }
+        return this.getPreSignedUrl(fileRequest, Method.GET);
     }
 
 //    /**
@@ -117,7 +118,7 @@ public class MinioFileService {
         try {
             minioClient.removeObject(RemoveObjectArgs.builder()
                     .bucket(fileRequest.getBucketName())
-                    .object(fileRequest.getFileName())
+                    .object(fileRequest.getFile().getOriginalFilename())
                     .build());
         }
         catch (MinioException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
@@ -137,35 +138,13 @@ public class MinioFileService {
                     GetPresignedObjectUrlArgs.builder()
                             .method(method)
                             .bucket(fileRequest.getBucketName())
-                            .object(fileRequest.getFileName())
+                            .object(fileRequest.getFile().getOriginalFilename())
                             .expiry(5, TimeUnit.MINUTES)
                             .build());
         }
         catch (RuntimeException | ErrorResponseException | InsufficientDataException | InternalException |
                InvalidKeyException | InvalidResponseException | IOException | NoSuchAlgorithmException |
                XmlParserException | ServerException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
-     * 특정 파일 태그 변경
-     * @param fileRequest : File instance
-     */
-    public void setObjectTags(FileRequest fileRequest) {
-        try {
-            minioClient.setObjectTags(
-                    SetObjectTagsArgs.builder()
-                            .bucket(fileRequest.getBucketName())
-                            .object(fileRequest.getFileName())
-                            .tags(fileRequest.getFileInfo())
-                            .build());
-            logger.info("MinioMapService setObjectTags() -> objectName : " + fileRequest.getFileName() + "tags : " + fileRequest.getFileInfo());
-        }
-        catch (ServerException | InsufficientDataException | ErrorResponseException | IOException |
-                 NoSuchAlgorithmException | InvalidKeyException | InvalidResponseException | XmlParserException |
-                 InternalException e) {
-            logger.error("MinioMapService setObjectTags() -> objectName : " + fileRequest.getFileName() + "tags : " + fileRequest.getFileInfo());
             throw new RuntimeException(e);
         }
     }
@@ -180,7 +159,7 @@ public class MinioFileService {
             Tags tags = minioClient.getObjectTags(
                     GetObjectTagsArgs.builder()
                             .bucket(fileRequest.getBucketName())
-                            .object(fileRequest.getFileName())
+                            .object(fileRequest.getFile().getOriginalFilename())
                             .build());
             return tags.get();
         }

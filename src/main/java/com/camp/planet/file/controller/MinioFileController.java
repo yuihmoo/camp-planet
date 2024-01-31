@@ -1,6 +1,7 @@
 package com.camp.planet.file.controller;
 
 import com.camp.planet.file.dto.request.FileRequest;
+import com.camp.planet.file.dto.response.UploadFileResponse;
 import com.camp.planet.file.service.MinioFileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,6 @@ public class MinioFileController {
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@ModelAttribute FileRequest fileRequest) {
-        minioFileService.uploadObject(fileRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(new UploadFileResponse(minioFileService.uploadObject(fileRequest)));
     }
 }

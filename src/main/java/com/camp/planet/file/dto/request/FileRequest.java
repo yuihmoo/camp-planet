@@ -25,6 +25,4 @@ public class FileRequest implements Serializable {
     @SuppressWarnings("java:S1948")
     private MultipartFile file;
     private String bucketName;
-    private String fileName;
-    private HashMap<String, String> fileInfo;
 }
