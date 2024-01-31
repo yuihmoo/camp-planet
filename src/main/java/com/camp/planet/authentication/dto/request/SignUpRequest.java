@@ -3,12 +3,9 @@ package com.camp.planet.authentication.dto.request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -44,4 +41,10 @@ public class SignUpRequest {
 
     @NotBlank(message = "휴대폰 번호는 필수 입니다.")
     private String phone;
+
+    private boolean isManager = false;
+
+    public boolean getIsManager() {
+        return isManager;
+    }
 }
