@@ -52,22 +52,22 @@ public class MinioFileService {
         }
     }
 
-//    /**
-//     * 서버 -> Minio 파일 직접 업로드
-//     * @param fileRequest : file instance
-//     */
-//    public void uploadObject(FileRequest fileRequest) {
-//        try {
-//            minioClient.putObject(PutObjectArgs.builder()
-//                    .bucket(fileRequest.getBucketName())
-//                    .object(fileRequest.getFileName())
-//                    .contentType(fileRequest.getFile().getContentType())
-//                    .stream(fileRequest.getFile().getInputStream(), fileRequest.getFile().getSize(), -1)
-//                    .build());
-//        } catch (MinioException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
-//            logger.error(e.getMessage());
-//        }
-//    }
+    /**
+     * 서버 -> Minio 파일 직접 업로드
+     * @param fileRequest : file instance
+     */
+    public void uploadObject(FileRequest fileRequest) {
+        try {
+            minioClient.putObject(PutObjectArgs.builder()
+                    .bucket(fileRequest.getBucketName())
+                    .object(fileRequest.getFileName())
+                    .contentType(fileRequest.getFile().getContentType())
+                    .stream(fileRequest.getFile().getInputStream(), fileRequest.getFile().getSize(), -1)
+                    .build());
+        } catch (MinioException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
+            logger.error(e.getMessage());
+        }
+    }
 
 //    /**
 //     * 서버 -> Minio 다중 파일 직접 업로드
