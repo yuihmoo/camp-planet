@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 @RestController
 @RequestMapping("/bucket")
 @RequiredArgsConstructor
-public class MinioBucketRestController {
+public class MinioBucketController {
     private final MinioNotifyHandler minioNotifyHandler;
 
     /**
