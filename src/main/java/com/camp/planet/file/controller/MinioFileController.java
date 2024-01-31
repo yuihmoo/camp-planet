@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/file")
 @RequiredArgsConstructor
-public class MinioFileRestController {
+public class MinioFileController {
     private final MinioFileService minioFileService;
 
     @PostMapping("/upload")

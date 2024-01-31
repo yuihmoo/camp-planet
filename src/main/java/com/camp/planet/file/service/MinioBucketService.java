@@ -106,7 +106,7 @@ public class MinioBucketService {
     public void setWebHookNotificationOfBucket(String bucketName) {
         try {
             String allFileSuffix = ".*";
-            String defaultQueue = "arn:minio:sqs::doubled:webhook";
+            String defaultQueue = "arn:minio:sqs::_:webhook";
 
             NotificationConfiguration config =
                     minioClient.getBucketNotification(GetBucketNotificationArgs.builder().bucket(bucketName).build());

@@ -12,7 +12,6 @@ public class CampPlanetApplication {
 
 	public static void main(String[] args) {
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(CampPlanetApplication.class);
-		builder.headless(false);
 		ConfigurableApplicationContext context = builder.run(args);
 
         MinioBucketService minioBucketService = context.getBean(MinioBucketService.class);

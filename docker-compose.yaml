@@ -25,6 +25,7 @@ services:
 #        ./gradlew build --continuous --quiet &
 #          ./gradlew bootRun;
 #      "
+
   postgres:
     image: bitnami/postgresql:14.2.0
     ports:
@@ -59,7 +60,7 @@ services:
       - MINIO_ROOT_USER=root
       - MINIO_ROOT_PASSWORD=ZGRyb290MTIhIQ==
       - MINIO_NOTIFY_WEBHOOK_ENABLE=on
-      - MINIO_NOTIFY_WEBHOOK_ENDPOINT=camp-planet:8080/bucket/notify
+      - MINIO_NOTIFY_WEBHOOK_ENDPOINT=http://localhost:8080/bucket/notify
     restart: always
     ports:
       - "9000:9000"
