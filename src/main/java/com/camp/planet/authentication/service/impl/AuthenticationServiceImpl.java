@@ -1,6 +1,6 @@
 package com.camp.planet.authentication.service.impl;
 
-import com.camp.planet.user.constant.Role;
+import com.camp.planet.user.constant.RoleType;
 import com.camp.planet.authentication.dto.request.LoginRequest;
 import com.camp.planet.authentication.dto.request.SignUpRequest;
 import com.camp.planet.authentication.dto.response.AuthenticationResponse;
@@ -42,7 +42,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .createdDate(LocalDateTime.now())
-                .role(request.getIsManager() ? Role.MANAGER : Role.USER).build();
+                .roleType(request.getIsManager() ? RoleType.MANAGER : RoleType.USER).build();
         userRepository.save(user);
         AuthenticationResponse authenticationResponse = jwtService.generateAuthenticationResponse(user);
         this.saveRefreshTokenHistory(user.getLoginId(), authenticationResponse.getRefreshToken());

@@ -1,6 +1,6 @@
 package com.camp.planet.user.entity;
 
-import com.camp.planet.user.constant.Role;
+import com.camp.planet.user.constant.RoleType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,7 +50,7 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleType type;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -65,7 +65,7 @@ public class User implements UserDetails {
     private LocalDateTime updatedDate;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(type.name()));
     }
 
     @Override

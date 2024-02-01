@@ -27,7 +27,7 @@ CREATE TABLE site (
 	introduce VARCHAR(100) NOT NULL,
 	manner_time VARCHAR(100) NOT NULL,
 	profile VARCHAR(255) NOT NULL,
-	site_desc_img VARCHAR(255) NOT NULL,
+	layout VARCHAR(255) NOT NULL,
 	created_date TIMESTAMP NOT NULL,
     updated_date TIMESTAMP
 );

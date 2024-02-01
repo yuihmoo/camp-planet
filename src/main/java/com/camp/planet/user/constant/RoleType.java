@@ -1,6 +1,6 @@
 package com.camp.planet.user.constant;
 
-public enum Role {
+public enum RoleType {
     USER,
     ADMIN,
     MANAGER,
