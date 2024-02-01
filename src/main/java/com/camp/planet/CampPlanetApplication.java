@@ -20,5 +20,4 @@ public class CampPlanetApplication {
 		minioBucketService.setWebHookNotificationOfBucket("public");
         minioBucketService.setWebHookNotificationOfBucket("private");
 	}
-
 }
