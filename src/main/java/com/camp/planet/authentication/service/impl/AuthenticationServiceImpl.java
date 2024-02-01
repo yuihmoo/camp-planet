@@ -42,7 +42,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .createdDate(LocalDateTime.now())
-                .roleType(request.getIsManager() ? RoleType.MANAGER : RoleType.USER).build();
+                .type(request.getIsManager() ? RoleType.MANAGER : RoleType.USER).build();
         userRepository.save(user);
         AuthenticationResponse authenticationResponse = jwtService.generateAuthenticationResponse(user);
         this.saveRefreshTokenHistory(user.getLoginId(), authenticationResponse.getRefreshToken());
