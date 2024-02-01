@@ -34,7 +34,7 @@ services:
     environment:
       - POSTGRESQL_USERNAME=yuihmoo
       - POSTGRESQL_PASSWORD=ZHlkZWhmMTI=
-      - POSTGRESQL_DATABASE=postgres
+      - POSTGRESQL_DATABASE=camp
     volumes:
       - db_data:/bitnami/postgresql
       - ./src/main/resources/schema/:/docker-entrypoint-initdb.d
