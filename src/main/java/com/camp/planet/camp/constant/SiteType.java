@@ -1,6 +1,6 @@
 package com.camp.planet.camp.constant;
 
-public enum CampType {
+public enum SiteType {
     AUTO(0),
     GLAMPING(1),
     CARAVAN(2),
@@ -8,7 +8,7 @@ public enum CampType {
 
     private final int value;
 
-    CampType(int value) {
+    SiteType(int value) {
         this.value = value;
     }
 
