@@ -1,5 +1,8 @@
 package com.camp.planet.camp.constant;
 
+import lombok.Getter;
+
+@Getter
 public enum SiteType {
     AUTO(0),
     GLAMPING(1),
@@ -12,7 +15,4 @@ public enum SiteType {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
 }
