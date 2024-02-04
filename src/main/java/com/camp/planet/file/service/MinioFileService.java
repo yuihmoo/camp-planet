@@ -8,14 +8,10 @@ import io.minio.http.Method;
 import io.minio.messages.Item;
 import io.minio.messages.Tags;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

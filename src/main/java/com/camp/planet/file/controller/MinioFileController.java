@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MinioFileController {
     private final MinioFileService minioFileService;
 
-    @PostMapping("/upload")
+    @PostMapping()
     public ResponseEntity<?> uploadFile(@ModelAttribute FileRequest fileRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(new UploadFileResponse(minioFileService.uploadObject(fileRequest)));
     }

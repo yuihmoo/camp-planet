@@ -1,6 +1,5 @@
 package com.camp.planet.camp.entity;
 
-import com.camp.planet.camp.constant.SiteType;
 import com.camp.planet.camp.constant.ZoneType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
