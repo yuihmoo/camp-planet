@@ -17,8 +17,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MinioBucketService {
-    private final Logger logger = LoggerFactory.getLogger(MinioBucketService.class);
+public class BucketService {
+    private final Logger logger = LoggerFactory.getLogger(BucketService.class);
     private final MinioClient minioClient;
 
     /**

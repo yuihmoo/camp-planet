@@ -1,6 +1,6 @@
 package com.camp.planet.file.controller.handler;
 
-import com.camp.planet.file.service.MinioBucketService;
+import com.camp.planet.file.service.BucketService;
 import io.minio.messages.EventType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -9,8 +9,8 @@ import java.util.LinkedHashMap;
 
 @Component
 @RequiredArgsConstructor
-public class MinioNotifyHandler {
-    private final MinioBucketService minioBucketService;
+public class NotifyHandler {
+    private final BucketService bucketService;
 
     /**
      * File 상태 변경에 따라 Method Handling
@@ -24,10 +24,10 @@ public class MinioNotifyHandler {
         String objectName = mapValues[1];
 
         if(eventName.equals(EventType.OBJECT_CREATED_PUT.toString())) {
-            minioBucketService.recordCreateLog(bucketName, objectName);
+            bucketService.recordCreateLog(bucketName, objectName);
         }
         else if (eventName.equals(EventType.OBJECT_REMOVED_DELETE.toString())) {
-            minioBucketService.recordDeleteLog(bucketName, objectName);
+            bucketService.recordDeleteLog(bucketName, objectName);
         }
     }
 }

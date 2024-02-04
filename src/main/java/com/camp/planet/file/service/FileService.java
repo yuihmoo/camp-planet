@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
-public class MinioFileService {
-    private final Logger logger = LoggerFactory.getLogger(MinioFileService.class);
+public class FileService {
+    private final Logger logger = LoggerFactory.getLogger(FileService.class);
     private final MinioClient minioClient;
 
     /**

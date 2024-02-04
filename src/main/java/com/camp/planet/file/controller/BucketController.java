@@ -1,6 +1,6 @@
 package com.camp.planet.file.controller;
 
-import com.camp.planet.file.controller.handler.MinioNotifyHandler;
+import com.camp.planet.file.controller.handler.NotifyHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,8 +12,8 @@ import java.util.LinkedHashMap;
 @RestController
 @RequestMapping("/bucket")
 @RequiredArgsConstructor
-public class MinioBucketController {
-    private final MinioNotifyHandler minioNotifyHandler;
+public class BucketController {
+    private final NotifyHandler notifyHandler;
 
     /**
      * Minio Notification : 파일 상태 관리 알림 EndPoint
@@ -22,6 +22,6 @@ public class MinioBucketController {
     @PostMapping("/notify")
     public void fileNotify(@RequestBody LinkedHashMap<String, Object> events) {
         System.out.println(events);
-        minioNotifyHandler.handleByEventName(events);
+        notifyHandler.handleByEventName(events);
     }
 }

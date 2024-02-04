@@ -2,7 +2,7 @@ package com.camp.planet.file.controller;
 
 import com.camp.planet.file.dto.request.FileRequest;
 import com.camp.planet.file.dto.response.UploadFileResponse;
-import com.camp.planet.file.service.MinioFileService;
+import com.camp.planet.file.service.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/file")
 @RequiredArgsConstructor
-public class MinioFileController {
-    private final MinioFileService minioFileService;
+public class FileController {
+    private final FileService fileService;
 
     @PostMapping()
     public ResponseEntity<?> uploadFile(@ModelAttribute FileRequest fileRequest) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(new UploadFileResponse(minioFileService.uploadObject(fileRequest)));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new UploadFileResponse(fileService.uploadObject(fileRequest)));
     }
 }
