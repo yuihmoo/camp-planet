@@ -16,10 +16,6 @@ public class MinioConfig {
     private String minioUrl;
     public static final String REGION_OF_SEOUL = "ap-northeast-2";
 
-    /**
-     * Minio Client
-     * @return
-     */
     @Bean
     @Primary
     public MinioClient minioClient() {

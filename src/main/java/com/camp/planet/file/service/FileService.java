@@ -56,6 +56,7 @@ public class FileService {
         try {
             minioClient.putObject(PutObjectArgs.builder()
                     .bucket(fileRequest.getBucketName())
+                    //todo: fileName 중복 & fileName 저장 여부 관련해서 Check
                     .object(fileRequest.getFile().getOriginalFilename())
                     .contentType(fileRequest.getFile().getContentType())
                     .stream(fileRequest.getFile().getInputStream(), fileRequest.getFile().getSize(), -1)
